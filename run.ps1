@@ -1,0 +1,3 @@
+$env:GOOGLE_CLOUD_PROJECT="quickstart-1583361005793"
+$env:GOOGLE_CLOUD_PROJECT="gemini-ai-464301"
+gemini
