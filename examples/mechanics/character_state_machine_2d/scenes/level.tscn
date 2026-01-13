@@ -1,0 +1,138 @@
+[gd_scene load_steps=8 format=3 uid="uid://0b4uj46s3twu"]
+
+[ext_resource type="PackedScene" uid="uid://djn4itn7hsq2e" path="res://player/player.tscn" id="1_a1va1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4jvw"]
+size = Vector2(640, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akhbg"]
+size = Vector2(28, 442)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjmyr"]
+size = Vector2(96, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7vvu"]
+size = Vector2(130, 111)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7o3hp"]
+size = Vector2(38, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20hwd"]
+size = Vector2(560, 61)
+
+[node name="Level" type="Node2D"]
+
+[node name="Respaunt" type="Marker2D" parent="."]
+position = Vector2(209, 109)
+
+[node name="Limit_left" type="Marker2D" parent="."]
+position = Vector2(-63, -50)
+
+[node name="Limit_right" type="Marker2D" parent="."]
+position = Vector2(1374, 364)
+
+[node name="Player" parent="." node_paths=PackedStringArray("respawn", "camera_limit_left", "camera_limit_right", "slow_areas", "kill_areas") instance=ExtResource("1_a1va1")]
+position = Vector2(-93, 165)
+respawn = NodePath("../Respaunt")
+camera_limit_left = NodePath("../Limit_left")
+camera_limit_right = NodePath("../Limit_right")
+slow_areas = [NodePath("../Collisions/Slow_area")]
+kill_areas = [NodePath("../Collisions/Kill_area")]
+
+[node name="Static" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Walls" type="StaticBody2D" parent="Static"]
+position = Vector2(10, 200)
+collision_layer = 3
+collision_mask = 3
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Static/Walls"]
+position = Vector2(1014, 2)
+shape = SubResource("RectangleShape2D_t4jvw")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static/Walls"]
+position = Vector2(310, 2)
+shape = SubResource("RectangleShape2D_t4jvw")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Static/Walls"]
+position = Vector2(1284, -229)
+shape = SubResource("RectangleShape2D_akhbg")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Static/Walls"]
+position = Vector2(-24, -229)
+shape = SubResource("RectangleShape2D_akhbg")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Static/Walls"]
+position = Vector2(486, -34)
+shape = SubResource("RectangleShape2D_tjmyr")
+one_way_collision = true
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Static/Walls"]
+position = Vector2(822, -34)
+shape = SubResource("RectangleShape2D_tjmyr")
+one_way_collision = true
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Static/Walls"]
+position = Vector2(662, -148)
+shape = SubResource("RectangleShape2D_tjmyr")
+one_way_collision = true
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Static/Walls"]
+position = Vector2(950, -66)
+shape = SubResource("RectangleShape2D_tjmyr")
+one_way_collision = true
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Static/Walls"]
+position = Vector2(1078, -98)
+shape = SubResource("RectangleShape2D_tjmyr")
+one_way_collision = true
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Static/Walls"]
+position = Vector2(1190, -130)
+shape = SubResource("RectangleShape2D_tjmyr")
+one_way_collision = true
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Static/Walls"]
+position = Vector2(1078, -178)
+shape = SubResource("RectangleShape2D_tjmyr")
+one_way_collision = true
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Static/Walls"]
+position = Vector2(902, -194)
+shape = SubResource("RectangleShape2D_tjmyr")
+one_way_collision = true
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Static/Walls"]
+position = Vector2(486, -178)
+shape = SubResource("RectangleShape2D_tjmyr")
+one_way_collision = true
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Static/Walls"]
+position = Vector2(294, -130)
+shape = SubResource("RectangleShape2D_tjmyr")
+one_way_collision = true
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="Slow_area" type="Area2D" parent="Collisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Slow_area"]
+position = Vector2(671, 258.5)
+shape = SubResource("RectangleShape2D_b7vvu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/Slow_area"]
+position = Vector2(672, 77.5)
+shape = SubResource("RectangleShape2D_7o3hp")
+
+[node name="Kill_area" type="Area2D" parent="Collisions"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Kill_area"]
+position = Vector2(684, 394)
+shape = SubResource("RectangleShape2D_20hwd")
