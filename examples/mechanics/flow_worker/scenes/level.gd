@@ -5,7 +5,7 @@ extends Node2D
 
 func _ready() -> void:
 	add_child(_flow_worker)
-	var example: int = 1
+	var example: int = 6
 	var actions: Array[FlowAction] = [
 				ActionCallCallable.new(_callable_test),
 				ActionPause.new(1),
@@ -25,13 +25,13 @@ func _ready() -> void:
 		4:
 			FlowWorker.run(self, actions, true)
 		5:
-			_flow_worker.processing_started.connect(_processing_state.bind(1))
-			_flow_worker.processing_ended.connect(_processing_state.bind(2))
+			_flow_worker.processing_started.connect(_processing_state.bind(1), CONNECT_ONE_SHOT)
+			_flow_worker.processing_ended.connect(_processing_state.bind(2), CONNECT_ONE_SHOT)
 			_flow_worker.add_actions(actions, true)
 		6:
-			_flow_worker.processing_started.connect(_processing_state.bind(1))
-			_flow_worker.processing_ended.connect(_processing_state.bind(2))
-			_flow_worker.processing_cancelled.connect(_processing_state.bind(3))
+			_flow_worker.processing_started.connect(_processing_state.bind(1), CONNECT_ONE_SHOT)
+			_flow_worker.processing_ended.connect(_processing_state.bind(2), CONNECT_ONE_SHOT)
+			_flow_worker.processing_cancelled.connect(_processing_state.bind(3), CONNECT_ONE_SHOT)
 			_flow_worker.add_actions(actions, true)
 			_flow_worker.cancel_processing()
 
@@ -40,6 +40,3 @@ func _callable_test() -> void:
 
 func _processing_state(state: int) -> void:
 	print("Processing state %d" % state)
-	if state >= 2:
-		_flow_worker.processing_started.disconnect(_processing_state)
-		_flow_worker.processing_ended.disconnect(_processing_state)
