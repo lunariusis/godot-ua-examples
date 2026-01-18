@@ -1,7 +1,7 @@
 class_name StateMachine extends RefCounted
 
 @warning_ignore("unused_signal")
-signal view_updated(data: Dictionary)
+signal state_updated(data: Dictionary)
 
 var states: Dictionary = {}
 var current_state: State = null

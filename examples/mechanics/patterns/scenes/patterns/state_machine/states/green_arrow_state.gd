@@ -1,7 +1,7 @@
 class_name GreenArrowState extends State
 
 func enter() -> void:
-	state_machine.view_updated.emit({
+	state_machine.state_updated.emit({
 		"label": "Current State: GREEN ARROW",
 		"lights": [false, false, true, true]
 	})
