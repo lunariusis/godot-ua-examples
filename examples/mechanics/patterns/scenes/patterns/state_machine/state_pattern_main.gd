@@ -16,14 +16,14 @@ func _ready() -> void:
 	fsm.add_state("green_arrow", GreenArrowState.new())
 	
 	transition_button.pressed.connect(_on_transition_button_pressed)
-	fsm.view_updated.connect(_on_view_updated)
+	fsm.state_updated.connect(_on_state_updated)
 	
 	fsm.set_initial_state("red")
 
 func _on_transition_button_pressed() -> void:
 	fsm.call_on_state("handle_action")
 
-func _on_view_updated(data: Dictionary) -> void:
+func _on_state_updated(data: Dictionary) -> void:
 	current_state_label.text = data.get("label", "UNKNOWN STATE")
 	var lights: Array = data.get("lights", [false, false, false, false])
 	traffic_light_view.update_lights(lights[0], lights[1], lights[2], lights[3])
