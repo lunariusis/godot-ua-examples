@@ -11,11 +11,7 @@ func add_state(state_name: String, state_instance: State) -> void:
 	state_instance.state_machine = self
 
 func set_initial_state(state_name: String) -> void:
-	if not states.has(state_name):
-		return
-
-	current_state = states[state_name]
-	current_state.enter()
+	change_state(state_name)
 
 func change_state(new_state_name: String) -> void:
 	if not states.has(new_state_name) or current_state == states[new_state_name]:
