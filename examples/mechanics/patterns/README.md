@@ -19,7 +19,7 @@ This example demonstrates the **State design pattern** using a Finite State Mach
 2.  Open the `scenes/patterns/state_machine/state_machine_example.tscn` scene.
 3.  Run the scene (F6).
 4.  You will see a visual representation of a traffic light.
-5.  Press the "Perform Action" button to trigger the `handle_action` method on the current state, causing a transition to the next state in the sequence.
+5.  Press the "Next State" button to trigger the `handle_action` method on the current state, causing a transition to the next state in the sequence.
 6.  The "Current State" label displays the name of the active state.
 
 - To see how the FSM is initialized, check `scenes/patterns/state_machine/state_pattern_main.gd`.
